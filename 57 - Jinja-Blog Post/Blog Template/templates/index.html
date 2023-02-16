@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="top">
+        <div class="title"><h1>My Blog</h1></div>
+    </div>
+    <div class="content">
+            {% for d in data: %}
+            <div class="card">
+                <h2>{{d["title"]}}</h2>
+                <p class="text">{{d["subtitle"]}}</p>
+                <a href="{{url_for('get_blog',blog_id=d['id'])}}">Read</a>
+            </div>
+            {% endfor %}
+
+    </div>
+</div>
+</body>
+<footer>
+    <p>Made with ♥️ in Pakistan.</p>
+</footer>
+</html>
