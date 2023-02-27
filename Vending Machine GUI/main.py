@@ -12,7 +12,7 @@ class VendingMachine:
     def button_clicked(self, price=0, checkout=False):
         label = Label()
         if checkout:
-            label.config(text=f"Total= {self.total}", font=("Arial", 30, "bold"))
+            label.config(text=f"Total: {self.total}", font=("Arial", 30, "bold"))
             self.total = 0
         else:
             label.config(text=f"Price: {price}", font=("Arial", 24, "italic"))
