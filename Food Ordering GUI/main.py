@@ -69,14 +69,35 @@ class VendingMachine:
 
         for i in range(len(labels)):
             if self.qty[i] > 0:
-                labels[i].config(text=f"{self.items[i]} ❌ {self.qty[i]}   =   Rs. {self.prices[i] * self.qty[i]}", font=("Arial", 12))
+                labels[i].config(text=f"{self.items[i]} ❌ {self.qty[i]}   =   Rs. {self.prices[i] * self.qty[i]}",
+                                 font=("Arial", 12))
                 labels[i].grid(row=r, column=c, pady=5)
                 r += 1
 
         label = Label(text=f"Grand Total: Rs. {self.total}", font=("Arial", 18, "bold", "italic"), pady=20)
         label.grid(row=15, column=1)
 
+        if self.total > 0:
+            money_label = Label(text="Enter Money:", font=("Arial", 12, "italic"))
+            money_label.grid(row=16, column=1)
+            enter_money = Entry()
+            enter_money.grid(row=17, column=1)
+
+            process_order = Button(text="Process Order", font=("Arial", 12, "bold"), command=lambda: self.order_processing(int(enter_money.get())))
+            process_order.grid(row=18, column=1, columnspan=2, pady=10)
+
         bill.mainloop()
+
+    def order_processing(self, money):
+        label = Button(font=("Arial", 14, "bold", "italic"), borderwidth=0)
+        if money == self.total:
+            label.config(text="Enjoy your snack!")
+        elif money < self.total:
+            label.config(text="Insufficient funds!")
+        else:
+            label.config(text=f"Your change: Rs.{money - self.total}\nEnjoy your snack!")
+
+        label.grid(row=18, column=1, sticky="ew")
 
     def mainloop(self):
         self.window.mainloop()
@@ -127,7 +148,8 @@ class VendingMachine:
             self.comboboxes[i].grid(column=c, row=r + 1, pady=5, padx=5)
             c += 1
 
-        generate_bill = Button(text="Generate Bill", command=self.button_clicked, font=("Arial", 20, "bold"))
+        generate_bill = Button(text="Generate Bill", command=self.button_clicked, font=("Arial", 20, "bold"),
+                               bg="#E5E5E5", borderwidth=2)
         generate_bill.grid(columnspan=2, row=11, column=2, pady=20)
 
 
