@@ -21,19 +21,19 @@ currencies = sorted(f"{iso4217parse.parse(c)[0][2].title()} ({c})" for c in sort
 
 # labeling and setting the dropdown/combobox for currency selection
 n = StringVar()
-currency_select_label = Label(text="Select Currency", font=("Arial", 12, "underline"), bg="#1F2124", fg="#ffffff")
+currency_select_label = Label(text="Select Currency", font=("Arial", 14, "underline"), bg="#1F2124", fg="#ffffff")
 currency_select_label.grid(column=2, row=2, pady=10)
 currency_select = ttk.Combobox(window, values=currencies, width=45, textvariable=n)
 currency_select.grid(column=2, row=3)
 
 # entry box for user to enter amount he/she wants to convert
-enter_amount = Label(text="Enter amount", font=("Arial", 11, "italic", "underline"), bg="#1F2124", fg="#ffffff")
+enter_amount = Label(text="Enter amount", font=("Arial", 14, "italic", "underline"), bg="#1F2124", fg="#ffffff")
 enter_amount.grid(column=2, row=4, pady=10)
 amount_to_convert = Entry(width=25)
 amount_to_convert.grid(column=2, row=5)
 
 # dropdown for currency to convert into
-convert_into_label = Label(text=f"Convert currency into", font=("Arial", 12, "underline"), bg="#1F2124", fg="#ffffff")
+convert_into_label = Label(text=f"Convert currency into", font=("Arial", 14, "underline"), bg="#1F2124", fg="#ffffff")
 convert_into_label.grid(column=2, row=6, pady=10)
 m = StringVar()
 convert_into = ttk.Combobox(window, values=currencies, width=45, textvariable=m)
