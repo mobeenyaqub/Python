@@ -17,7 +17,7 @@ heading = Label(text="Currency Converter", font=("Arial", 24, "bold"), fg="#F0F0
 heading.grid(column=2, row=1, pady=20)
 
 # initializing currencies to use in the program
-currencies = sorted(f"{iso4217parse.parse(c)[0][2]} ({c})".title() for c in sorted(response["rates"].keys()))
+currencies = sorted(f"{iso4217parse.parse(c)[0][2].title()} ({c})" for c in sorted(response["rates"].keys()))
 
 # labeling and setting the dropdown/combobox for currency selection
 n = StringVar()
