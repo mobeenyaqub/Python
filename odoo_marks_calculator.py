@@ -17,7 +17,6 @@ def run(playwright: Playwright):
     page.get_by_role("button", name="No").click()
     page.wait_for_selector('h6')
     teacher_names = [i.inner_text() for i in page.query_selector_all('h6')]
-    results = {}
 
     for name in teacher_names:
         page.locator(f'text={name}').click()
@@ -29,11 +28,10 @@ def run(playwright: Playwright):
         course_title = page.locator('#breadcrumbs li').nth(1).inner_text()
         ans = (f'{sum([actual_percentage[i] * obtained_percentage[i] / 100 for i in range(len(actual_percentage))])}'
                f' / {sum(actual_percentage)}')
-        results[course_title] = ans
+        
         page.get_by_role("link", name="home").click()
         time.sleep(2)
-    for key, value in results.items():
-        print(f'{key}: {value}')
+        print(f'{course_title}: {ans}')
     # ---------------------
     context.close()
     browser.close()
