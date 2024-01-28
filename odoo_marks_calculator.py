@@ -1,7 +1,11 @@
 import time
 from playwright.sync_api import Playwright, sync_playwright, expect
 
+# Instructions (execute these 2 commands one by one in CMD/Terminal)
+# pip install playwright
+# playwright install
 
+# Enter your teams email/password to execute this script
 def run(playwright: Playwright):
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
